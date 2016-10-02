@@ -1,5 +1,11 @@
 {
-  "extends": [
-    "eslint-config-moro"
-  ]
+    "root": true,
+    "extends": [
+        "moro"
+    ],
+    "rules": {
+        "import/no-named-as-default": 0
+    },
+    "globals": {
+    }
 }
