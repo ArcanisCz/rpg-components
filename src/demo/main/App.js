@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {SampleComponent} from "../../../index";
+import {SampleComponent} from "../../index";
 
 const App = ({children}) => (
     <div>
