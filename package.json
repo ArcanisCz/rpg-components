@@ -13,8 +13,8 @@
     "lint:watch": "npm run lint -- --watch",
     "clean": "rimraf lib es dist coverage",
     "build": "npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",
-    "build:lib": "babel src --out-dir lib",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:lib": "babel src --out-dir lib --ignore \"**/*.spec.js\"",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore \"**/*.spec.js\"",
     "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/moro-components.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/moro-components.min.js",
     "prepublish": "npm run lint && npm run test && npm run clean && npm run build",
@@ -65,14 +65,5 @@
     "es",
     "lib",
     "dist"
-  ],
-  "npmName": "moro-components",
-  "npmFileMap": [
-    {
-      "basePath": "/dist/",
-      "files": [
-        "*.js"
-      ]
-    }
   ]
 }
