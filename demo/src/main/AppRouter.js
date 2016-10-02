@@ -1,13 +1,18 @@
 import React, {PropTypes} from 'react';
-import {Router, Route} from "react-router";
+import {Router, Route, IndexRedirect} from "react-router";
 
 import App from "./App";
+import PageFirst from "./PageFirst";
+import PageSecond from "./PageSecond";
 
 const AppRouter = ({history}) => (
     <Router history={history}>
-        <Route path="/" component={App} />
+        <Route path="/" component={App}>
+            <IndexRedirect to="/first" />
+            <Route path="first" component={PageFirst} />
+            <Route path="second" component={PageSecond} />
+        </Route>
     </Router>
-
 );
 
 AppRouter.propTypes = {
