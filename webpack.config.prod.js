@@ -1,62 +1,64 @@
-// For info about this file refer to webpack and webpack-hot-middleware documentation
-// For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import WebpackMd5Hash from 'webpack-md5-hash';
-import autoprefixer from 'autoprefixer';
-import path from 'path';
+'use strict'
+var webpack = require('webpack')
 
-const GLOBALS = {
-    'process.env.NODE_ENV': JSON.stringify('production'),
-    __DEV__: false,
-};
+var env = process.env.NODE_ENV
 
-export default {
-    resolve: {
-        extensions: ['', '.js', '.jsx'],
+var reactExternal = {
+    root: 'React',
+    commonjs2: 'react',
+    commonjs: 'react',
+    amd: 'react'
+}
+
+var reduxExternal = {
+    root: 'Redux',
+    commonjs2: 'redux',
+    commonjs: 'redux',
+    amd: 'redux'
+}
+
+var reactReduxExternal = {
+    root: 'ReactRedux',
+    commonjs2: 'react-redux',
+    commonjs: 'react-redux',
+    amd: 'react-redux'
+}
+
+var config = {
+    externals: {
+        'react': reactExternal,
+        'redux': reduxExternal,
+        'react-redux': reactReduxExternal
     },
-    debug: true,
-    devtool: 'source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
-    noInfo: true, // set to false to see a list of every file being bundled.
-    entry: path.resolve(__dirname, 'src/index'),
-    target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
-    utput: {
-        library: 'ReactRedux',
-        libraryTarget: 'umd',
-    },
-    plugins: [
-        // Hash the files using MD5 so that their names change when the content changes.
-        new WebpackMd5Hash(),
-
-        // Optimize the order that items are bundled. This assures the hash is deterministic.
-        new webpack.optimize.OccurenceOrderPlugin(),
-
-        // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
-        new webpack.DefinePlugin(GLOBALS),
-
-        // Eliminate duplicate packages when generating bundle
-        new webpack.optimize.DedupePlugin(),
-
-        // Minify JS
-        new webpack.optimize.UglifyJsPlugin(),
-    ],
     module: {
         loaders: [
-            {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel'},
-            {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'url?name=[name].[ext]'},
-            {
-                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url?limit=10000&mimetype=application/font-woff&name=[name].[ext]",
-            },
-            {
-                test: /\.ttf(\?v=\d+.\d+.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/octet-stream&name=[name].[ext]',
-            },
-            {test: /\.svg(\?v=\d+.\d+.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml&name=[name].[ext]'},
-            {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
-            {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
-            {test: /(\.css|\.less)$/, loader: ExtractTextPlugin.extract('css?sourceMap!postcss!less?sourceMap')},
-        ],
+            { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
+        ]
     },
-    postcss: () => [autoprefixer],
-};
+    output: {
+        library: 'moro-components',
+        libraryTarget: 'umd'
+    },
+    plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(env)
+        })
+    ]
+}
+
+if (env === 'production') {
+    config.plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            compressor: {
+                pure_getters: true,
+                unsafe: true,
+                unsafe_comps: true,
+                warnings: false
+            }
+        })
+    )
+    config.plugins.push(new webpack.optimize.DedupePlugin())
+}
+
+module.exports = config
