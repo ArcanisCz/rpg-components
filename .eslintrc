@@ -4,7 +4,6 @@
         "moro"
     ],
     "rules": {
-        "import/no-named-as-default": 0
     },
     "globals": {
     }

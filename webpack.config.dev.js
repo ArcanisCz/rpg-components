@@ -12,11 +12,12 @@ export default {
     noInfo: true, // set to false to see a list of every file being bundled.
     entry: [
         // must be first entry to properly set public path
-        './src/webpack-public-path',
+        './src/demo/webpack-public-path',
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
-        path.join(__dirname, 'src/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.
+        path.join(__dirname, 'src/demo/index.js'), // Defining path seems necessary for this to work consistently on
+        // Windows machines.
     ],
     target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
     output: {
@@ -32,7 +33,7 @@ export default {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new HtmlWebpackPlugin({     // Create HTML file that includes references to bundled CSS and JS.
-            template: 'src/index.ejs',
+            template: 'src/demo/index.ejs',
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
