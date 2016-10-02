@@ -1,4 +1,4 @@
-import SampleComponentInternal from "./SampleComponent";
+import SampleComponentInternal from "./components/SampleComponent";
 
 export default {
     SampleComponent: SampleComponentInternal,
