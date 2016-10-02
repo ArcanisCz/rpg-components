@@ -1,6 +1,6 @@
 {
   "name": "moro-components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Moro compoents",
   "engines": {
     "npm": ">=3"
