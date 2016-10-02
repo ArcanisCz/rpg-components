@@ -1,12 +1,16 @@
-import React from 'react';
-import {SampleComponent} from "moro-components";
+import React, {PropTypes} from 'react';
+import {SampleComponent} from "../../../src";
 
 const App = ({children}) => (
     <div>
-        <h1>Apaap</h1>
+        <h1>Apps</h1>
         {children}
         <SampleComponent />
     </div>
 );
+
+App.propTypes = {
+    children: PropTypes.node,
+};
 
 export default App;
