@@ -1,19 +1,14 @@
-# `moro-components`
+Components for Morosystems
+
+Demo TODO
 
 ## Usage
 
-Install from npm
-`npm i moro-components --save`
+1. install from npm `npm i moro-components --save`
+2. include in project `import {SampleComponent} from 'moro-components';`
+3. include less `@import "~moro-components/lib/index.less";`
+4. (or optionally compiled css) `./node-modules/moro-components/dist/index.css`
 
-Include in project
-```javascript
-import {SampleComponent} from 'moro-components';
-```
-
-Include less
-```less
-@import "~moro-components/lib/index.less";
-```
 
 # Components
 
@@ -27,5 +22,5 @@ Sample component for the sake of samples
 
 A string name, which will be printed.
 
-#Contributing
+# Contributing
 TODO
