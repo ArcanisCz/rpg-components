@@ -1,51 +1,52 @@
-'use strict'
-var webpack = require('webpack')
 
-var env = process.env.NODE_ENV
 
-var reactExternal = {
+const webpack = require('webpack');
+
+const env = process.env.NODE_ENV;
+
+const reactExternal = {
     root: 'React',
     commonjs2: 'react',
     commonjs: 'react',
-    amd: 'react'
-}
+    amd: 'react',
+};
 
-var reduxExternal = {
+const reduxExternal = {
     root: 'Redux',
     commonjs2: 'redux',
     commonjs: 'redux',
-    amd: 'redux'
-}
+    amd: 'redux',
+};
 
-var reactReduxExternal = {
+const reactReduxExternal = {
     root: 'ReactRedux',
     commonjs2: 'react-redux',
     commonjs: 'react-redux',
-    amd: 'react-redux'
-}
+    amd: 'react-redux',
+};
 
-var config = {
+const config = {
     externals: {
-        'react': reactExternal,
-        'redux': reduxExternal,
-        'react-redux': reactReduxExternal
+        react: reactExternal,
+        redux: reduxExternal,
+        'react-redux': reactReduxExternal,
     },
     module: {
         loaders: [
-            { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
-        ]
+            {test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/},
+        ],
     },
     output: {
         library: 'moro-components',
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(env)
-        })
-    ]
-}
+            'process.env.NODE_ENV': JSON.stringify(env),
+        }),
+    ],
+};
 
 if (env === 'production') {
     config.plugins.push(
@@ -54,11 +55,11 @@ if (env === 'production') {
                 pure_getters: true,
                 unsafe: true,
                 unsafe_comps: true,
-                warnings: false
-            }
+                warnings: false,
+            },
         })
-    )
-    config.plugins.push(new webpack.optimize.DedupePlugin())
+    );
+    config.plugins.push(new webpack.optimize.DedupePlugin());
 }
 
-module.exports = config
+module.exports = config;
