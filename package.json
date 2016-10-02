@@ -7,7 +7,8 @@
   },
   "main": "./lib/index.js",
   "scripts": {
-    "lint": "esw webpack.config.* src tools --color --fix",
+    "lint": "esw webpack.config.* src tools --color",
+    "lintf": "esw webpack.config.* src tools --color --fix",
     "lint:watch": "npm run lint -- --watch",
     "clean": "rimraf lib es dist coverage",
     "build": "npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",

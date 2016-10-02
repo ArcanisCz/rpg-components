@@ -13,7 +13,7 @@ const reactExternal = {
 
 const config = {
     externals: {
-        react: reactExternal
+        react: reactExternal,
     },
     module: {
         loaders: [
