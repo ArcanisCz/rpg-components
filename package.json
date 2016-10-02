@@ -5,7 +5,7 @@
   "engines": {
     "npm": ">=3"
   },
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
     "setup": "node tools/setup/setupMessage.js && npm install && node tools/setup/setup.js",
@@ -15,10 +15,14 @@
     "open:src": "babel-node tools/srcServer.js",
     "lint": "esw webpack.config.* src tools --color --fix",
     "lint:watch": "npm run lint -- --watch",
-    "clean-dist": "npm run remove-dist && mkdir dist",
+    "clean": "rimraf lib dist coverage",
     "remove-dist": "rimraf ./dist",
-    "prebuild": "npm run clean-dist && npm run lint && npm run test",
-    "build": "babel-node tools/build.js",
+    "prebuild": "npm run clean && npm run lint && npm run test",
+    "build:lib": "babel-node src --out-dir lib",
+    "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/moro-components.js --config webpack.config.prod.js",
+    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/moro-components.min.js --config webpack.config.prod.js",
+    "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "prepublish": "npm run clean && npm run build",
     "test": "mocha tools/testSetup.js \"src/components/**/*.spec.js\" --reporter progress",
     "test:cover": "babel-node node_modules/isparta/bin/isparta cover --root src --report html node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"src/components/**/*.spec.js\" --reporterprogress",
     "test:cover:travis": "babel-node node_modules/isparta/bin/isparta cover --root src --report lcovonly _mocha-- --require ./tools/testSetup.js \"src/components/**/*.spec.js\" && cat ./coverage/lcov.info |node_modules/coveralls/bin/coveralls.js",
