@@ -6,6 +6,7 @@
     "npm": ">=3"
   },
   "main": "./lib/index.js",
+  "jsnext:main": "./es/index.js",
   "scripts": {
     "lint": "esw webpack.config.* src tools --color",
     "lintf": "esw webpack.config.* src tools --color --fix",
