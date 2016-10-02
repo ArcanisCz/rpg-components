@@ -11,25 +11,9 @@ const reactExternal = {
     amd: 'react',
 };
 
-const reduxExternal = {
-    root: 'Redux',
-    commonjs2: 'redux',
-    commonjs: 'redux',
-    amd: 'redux',
-};
-
-const reactReduxExternal = {
-    root: 'ReactRedux',
-    commonjs2: 'react-redux',
-    commonjs: 'react-redux',
-    amd: 'react-redux',
-};
-
 const config = {
     externals: {
-        react: reactExternal,
-        redux: reduxExternal,
-        'react-redux': reactReduxExternal,
+        react: reactExternal
     },
     module: {
         loaders: [
