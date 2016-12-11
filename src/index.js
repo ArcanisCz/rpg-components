@@ -1,7 +1,7 @@
-import SampleComponentInternal from "./components/SampleComponent";
+import SampleComponentInternal from './components/SampleComponent';
 
 export default {
-    SampleComponent: SampleComponentInternal,
+  SampleComponent: SampleComponentInternal,
 };
 
 export const SampleComponent = SampleComponentInternal;
