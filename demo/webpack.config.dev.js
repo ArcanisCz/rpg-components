@@ -8,13 +8,12 @@ export default {
     extensions: ['', '.js', '.jsx'],
   },
   debug: true,
-  devtool: 'eval-source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
+  devtool: 'cheap-eval-source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
   noInfo: true, // set to false to see a list of every file being bundled.
   entry: [
         // must be first entry to properly set public path
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    'react-hot-loader/patch',
     path.join(__dirname, 'src/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.
   ],
   target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test

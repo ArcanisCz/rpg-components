@@ -16,7 +16,7 @@ const AppRouter = ({ history }) => (
 );
 
 AppRouter.propTypes = {
-  history: PropTypes.instanceOf(browserHistory).isRequired,
+  history: PropTypes.oneOf([browserHistory]).isRequired,
 };
 
 export default AppRouter;
