@@ -1,6 +1,6 @@
 import React from 'react';
-import main from "./main";
-import {browserHistory} from "react-router";
+import { browserHistory } from 'react-router';
+import main from './main';
 
 const IndexComponent = () => <main.AppRouter history={browserHistory} />;
 
