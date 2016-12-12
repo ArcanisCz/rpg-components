@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router';
+import {Router, Route, IndexRedirect, hashHistory} from 'react-router';
 
 import App from './App';
 import PageFirst from './PageFirst';
@@ -16,7 +16,7 @@ const AppRouter = ({history}) => (
 );
 
 AppRouter.propTypes = {
-    history: PropTypes.oneOf([browserHistory]).isRequired,
+    history: PropTypes.oneOf([hashHistory]).isRequired,
 };
 
 export default AppRouter;

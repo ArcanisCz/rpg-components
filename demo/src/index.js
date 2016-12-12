@@ -7,7 +7,7 @@ import './include.less';
 import './favicon.ico';
 
 /* eslint-disable no-undef */
-render((<IndexComponent />), document.getElementById('app'));
+render(<IndexComponent />, document.getElementById('app'));
 /* eslint-enable no-undef */
 
 if (module.hot) {

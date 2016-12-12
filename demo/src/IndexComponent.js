@@ -1,7 +1,7 @@
 import React from 'react';
-import {browserHistory} from 'react-router';
+import {hashHistory} from 'react-router';
 import main from './main';
 
-const IndexComponent = () => <main.AppRouter history={browserHistory} />;
+const IndexComponent = () => <main.AppRouter history={hashHistory} />;
 
 export default IndexComponent;
