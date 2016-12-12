@@ -6,30 +6,22 @@ export default class ResourceBarDemo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            max: 10,
-            value: 20,
-            canOverMax: false,
+            max: 200,
+            value: 50,
         };
         this.changeValue = this.changeValue.bind(this);
         this.changeMax = this.changeMax.bind(this);
-        this.changeCanOverMax = this.changeCanOverMax.bind(this);
     }
 
     changeValue(input){
         this.setState({
-            value: parseInt(input.target.value)
+            value: parseInt(input.target.value || 0)
         })
     }
 
     changeMax(input){
         this.setState({
-            max: parseInt(input.target.value)
-        })
-    }
-
-    changeCanOverMax(input){
-        this.setState({
-            canOverMax: !!input.target.checked
+            max: parseInt(input.target.value || 0)
         })
     }
 
@@ -40,7 +32,6 @@ export default class ResourceBarDemo extends Component {
                     <ResourceBar
                         max={this.state.max}
                         value={this.state.value}
-                        canOverLimit={this.state.canOverMax}
                     />
                 </Col>
                 <Col md={6}>
@@ -62,12 +53,6 @@ export default class ResourceBarDemo extends Component {
                             onChange={this.changeMax}
                         />
                     </FormGroup>
-                    <Checkbox
-                        onChange={this.changeCanOverMax}
-                        checked={this.state.canOverMax}
-                    >
-                        canOverMax
-                    </Checkbox>
                 </Col>
             </Panel>
         )
