@@ -24,7 +24,9 @@ class ResourceBar extends Component {
         this.state = {
             max: actualMax,
             value: actualValue,
+            displayValue: actualValue,
         };
+        this.timer = this.timer.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -33,7 +35,9 @@ class ResourceBar extends Component {
         this.setState({
             max: actualMax,
             value: actualValue,
-        })
+            intervalId: null,
+        });
+        setTimeout(this.timer, 100);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -64,15 +68,29 @@ class ResourceBar extends Component {
         return changed;
     }
 
+    timer() {
+        if (this.state.displayValue !== this.state.value) {
+            const toAdd = (this.state.value - this.state.displayValue) / 10;
+            this.setState({
+                displayValue: this.state.displayValue + (toAdd > 0 ? Math.ceil(toAdd) : Math.floor(toAdd)),
+                intervalId: null,
+            }, () => {
+                if (!this.state.intervalId) {
+                    setTimeout(this.timer, 5);
+                }
+            });
+        }
+
+    }
+
     render() {
-        const actualMax = getMax(this.state.max);
-        const actualValue = getValue(this.state.value, actualMax, this.props.canOverLimit);
+        // console.log("render", this.state.value, this.state.displayValue);
 
-        const displayMax = this.props.canOverLimit ? Math.max(actualMax, actualValue) : actualMax;
+        const displayMax = this.props.canOverLimit ? Math.max(this.state.max, this.state.displayValue) : this.state.max;
 
-        const fullWidth = Math.min(Math.min(actualValue, actualMax) / displayMax * 100, 100);
-        const emptyWidth = (displayMax - actualValue) / displayMax * 100;
-        const overlimitWidth = Math.max(0, (actualValue - actualMax) / displayMax) * 100;
+        const fullWidth = Math.min(Math.min(this.state.displayValue, this.state.max) / displayMax * 100, 100);
+        const emptyWidth = (displayMax - this.state.displayValue) / displayMax * 100;
+        const overlimitWidth = Math.max(0, (this.state.displayValue - this.state.max) / displayMax) * 100;
 
         const classes = classnames({
             "rpg-components-resouce-bar": true,
@@ -80,7 +98,7 @@ class ResourceBar extends Component {
 
         return (
             <div className={classes}>
-                <span className="text">{actualValue} / {actualMax}</span>
+                <span className="text">{this.state.value} / {this.state.max}</span>
                 <span className="full-part" style={{width: fullWidth+"%"}}/>
                 <span className="empty-part" style={{width: emptyWidth+"%",left: fullWidth+"%"}}/>
                 <span className="overlimit-part" style={{width: overlimitWidth+"%",left: fullWidth+emptyWidth+"%"}}/>
