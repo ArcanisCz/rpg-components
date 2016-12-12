@@ -1,5 +1,5 @@
 .ResourceBar {
-    .makeResourceBar(red, #ddd);
+    .makeResourceBar(red, #eee, darken(red, 10%), lighten(green, 15%));
     width: 100%;
     border: 1px solid black;
     position: relative;
@@ -12,36 +12,28 @@
         text-align: center;
     }
 
-    .full-part {
-        top: 0;
-        background: red;
-        position: absolute;
-        height: 100%;
-    }
-
+    .full-part,
+    .full-temp-part,
+    .empty-temp-part,
     .empty-part {
         top: 0;
         position: absolute;
         height: 100%;
     }
 
-    .overlimit-part {
-        top: 0;
-        position: absolute;
-        height: 100%;
-    }
 }
 
-.makeResourceBar(@fullColor, @emptyColor) {
-    .empty-part {
-        background: @emptyColor;
-    }
-
+.makeResourceBar(@fullColor, @emptyColor, @dmgColor, @healColor) {
+    background: @emptyColor;
     .full-part {
         background: @fullColor;
     }
 
-    .overlimit-part {
-        background: darken(@fullColor, 10%);
+    .full-temp-part {
+        background: @dmgColor;
+    }
+
+    .empty-temp-part {
+        background: @healColor;
     }
 }

@@ -23,11 +23,21 @@ class ResourceBar extends Component {
 
     componentWillReceiveProps(nextProps) {
         const max = getMax(nextProps.max);
-        const value = getValue(nextProps.value, max);
-        this.setState({
-            max,
-            value,
-        }, () => setTimeout(this.timer, 5));
+        const oldMax = getMax(this.props.max);
+        const newValue = getValue(nextProps.value, max);
+        if (max !== oldMax) {
+            this.setState({
+                max,
+                value: newValue,
+                displayValue: newValue,
+            });
+        } else {
+            this.setState({
+                max,
+                value: newValue,
+            }, () => setTimeout(this.timer, 250));
+        }
+
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -46,18 +56,18 @@ class ResourceBar extends Component {
     }
 
     render() {
-        const displayMax = Math.max(this.state.max, this.state.displayValue);
-
-        const fullWidth = Math.min(Math.min(this.state.displayValue, this.state.max) / displayMax * 100, 100);
-        const emptyWidth = (displayMax - this.state.displayValue) / displayMax * 100;
-        const overlimitWidth = Math.max(0, (this.state.displayValue - this.state.max) / displayMax) * 100;
+        const fullWidth = (this.state.value / this.state.max) * 100;
+        const fullTempWidth = ((this.state.displayValue - this.state.value) / this.state.max) * 100;
+        const emptyTempWidth = ((this.state.value - this.state.displayValue) / this.state.max) * 100;
+        const emptyWidth = 100 - (fullWidth + fullTempWidth + emptyTempWidth);
 
         return (
             <div className="rpg-components-resouce-bar">
                 <span className="text">{this.state.value} / {this.state.max}</span>
-                <span className="full-part" style={{width: fullWidth+"%"}}/>
-                <span className="empty-part" style={{width: emptyWidth+"%",left: fullWidth+"%"}}/>
-                <span className="overlimit-part" style={{width: overlimitWidth+"%",left: fullWidth+emptyWidth+"%"}}/>
+                <span className="full-part" style={{width: fullWidth+"%", left: 0+"%"}}/>
+                <span className="full-temp-part" style={{width: fullTempWidth+"%", left: fullWidth+"%"}}/>
+                <span className="empty-temp-part" style={{width: emptyTempWidth+"%", left: (fullWidth+fullTempWidth)+"%"}}/>
+                <span className="empty-part" style={{width: emptyWidth+"%",left: (fullWidth+fullTempWidth+emptyTempWidth)+"%"}}/>
             </div>
         );
     }
