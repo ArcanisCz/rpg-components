@@ -50,12 +50,12 @@ class ResourceBar extends Component {
         const changed = shallowCompare(instance, myNextProps, nextState);
         if (debug && changed) {
             Object.keys(nextProps).forEach((key) => {
-                if(nextProps[key] !== this.props[key]){
+                if (nextProps[key] !== this.props[key]) {
                     console.log(key, nextProps[key], this.props[key]);
                 }
             });
             Object.keys(nextState).forEach((key) => {
-                if(nextState[key] !== this.state[key]){
+                if (nextState[key] !== this.state[key]) {
                     console.log(key, nextState[key], this.state[key]);
                 }
             });
@@ -80,29 +80,10 @@ class ResourceBar extends Component {
 
         return (
             <div className={classes}>
-            <span className="text">
-                {actualValue} / {actualMax}
-            </span>
-            <span
-                className="full-part"
-                style={{
-                    width: fullWidth+"%",
-                }}
-            />
-            <span
-                className="empty-part"
-                style={{
-                    width: emptyWidth+"%",
-                    left: fullWidth+"%",
-                }}
-            />
-            <span
-                className="overlimit-part"
-                style={{
-                    width: overlimitWidth+"%",
-                    left: fullWidth+emptyWidth+"%",
-                }}
-            />
+                <span className="text">{actualValue} / {actualMax}</span>
+                <span className="full-part" style={{width: fullWidth+"%"}}/>
+                <span className="empty-part" style={{width: emptyWidth+"%",left: fullWidth+"%"}}/>
+                <span className="overlimit-part" style={{width: overlimitWidth+"%",left: fullWidth+emptyWidth+"%"}}/>
             </div>
         );
     }
