@@ -1,0 +1,47 @@
+.ResourceBar {
+    .makeResourceBar(red, #ddd);
+    width: 100%;
+    border: 1px solid black;
+    position: relative;
+    height: 20px;
+
+    .text {
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        text-align: center;
+    }
+
+    .full-part {
+        top: 0;
+        background: red;
+        position: absolute;
+        height: 100%;
+    }
+
+    .empty-part {
+        top: 0;
+        position: absolute;
+        height: 100%;
+    }
+
+    .overlimit-part {
+        top: 0;
+        position: absolute;
+        height: 100%;
+    }
+}
+
+.makeResourceBar(@fullColor, @emptyColor) {
+    .empty-part {
+        background: @emptyColor;
+    }
+
+    .full-part {
+        background: @fullColor;
+    }
+
+    .overlimit-part {
+        background: darken(@fullColor, 10%);
+    }
+}

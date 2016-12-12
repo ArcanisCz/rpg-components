@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 
 import IndexComponent from './IndexComponent';
 import './index.less';
+import './include.less';
 import './favicon.ico';
 
 /* eslint-disable no-undef */
