@@ -1,5 +1,5 @@
-import React, {PropTypes, Component} from "react";
-import {Panel, Col, FormGroup, ControlLabel, FormControl, Checkbox} from "react-bootstrap";
+import React, {Component} from 'react';
+import {Panel, Col, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
 import {ResourceBar} from '../../../src';
 
 export default class ResourceBarDemo extends Component {
@@ -13,16 +13,16 @@ export default class ResourceBarDemo extends Component {
         this.changeMax = this.changeMax.bind(this);
     }
 
-    changeValue(input){
+    changeValue(input) {
         this.setState({
-            value: parseInt(input.target.value || 0)
-        })
+            value: parseInt(input.target.value || 0),
+        });
     }
 
-    changeMax(input){
+    changeMax(input) {
         this.setState({
-            max: parseInt(input.target.value || 0)
-        })
+            max: parseInt(input.target.value || 0),
+        });
     }
 
     render() {
@@ -55,8 +55,6 @@ export default class ResourceBarDemo extends Component {
                     </FormGroup>
                 </Col>
             </Panel>
-        )
+        );
     }
 }
-
-ResourceBarDemo.propTypes = {};

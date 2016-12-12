@@ -3,11 +3,70 @@
     "extends": [
         "airbnb"
     ],
+    "plugins": [
+        "react"
+    ],
+    "quote-props": ["error", "consistent"],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true,
+        "mocha": true
+    },
     "rules": {
+        // indents
+        "indent": ["error", 4, {
+            "SwitchCase": 1,
+            "VariableDeclarator": 1,
+            "outerIIFEBody": 1
+        }],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+
+        "max-len": ["error", 200],
+        // we dont care about single or double quotes
+        "quotes": 0,
+
+        "no-console": ["error", {"allow": ["error"]}],
         "import/no-named-as-default": 0,
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        // weird behavior
         "import/no-extraneous-dependencies": 0,
-        "max-len": [1, 200]
+        "react/jsx-filename-extension": ["warn", {"extensions": [".js", ".jsx"]}],
+        // too much edge cases https://github.com/eslint/eslint/issues/2023
+        "new-cap": 0,
+        // sometimes else branch can make things more legible
+        "no-else-return": "off",
+        // not so dangerous, we need it because of chai expect.to.be.true;
+        "no-void": "off",
+        // no need for radix for decimal numbers
+        "radix": ["error", "as-needed"],
+        // no spaces inside {}
+        "object-curly-spacing": ["error", "never"],
+        // parentheses around => params
+        "arrow-parens": ["error", "always"],
+        // due to package conventions and constants which sometimes contain only NAME
+        "import/prefer-default-export": "off",
+        // we want onClick handlers even for divs
+        "jsx-a11y/no-static-element-interactions": "off",
+        // imports first, but not relative after absolute
+        "import/imports-first": ["error", ""],
+        // too much problems
+        "react/forbid-prop-types": "off",
+        // nonsense
+        "jsx-a11y/aria-role": "off",
+        // we cover this by git
+        "linebreak-style": "off",
+
+        /* WARNINGS */
+        "react/jsx-key": "warn"
     },
     "globals": {
     }

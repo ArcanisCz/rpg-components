@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PageSecond = () => (
-  <div>
+    <div>
         Second
     </div>
 );

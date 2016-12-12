@@ -8,9 +8,9 @@ import PageSecond from './PageSecond';
 const AppRouter = ({history}) => (
     <Router history={history}>
         <Route path="/" component={App}>
-            <IndexRedirect to="/first"/>
-            <Route path="first" component={PageFirst}/>
-            <Route path="second" component={PageSecond}/>
+            <IndexRedirect to="/first" />
+            <Route path="first" component={PageFirst} />
+            <Route path="second" component={PageSecond} />
         </Route>
     </Router>
 );

@@ -10,6 +10,6 @@ import './favicon.ico';
 render((<IndexComponent />), document.getElementById('app'));
 /* eslint-enable no-undef */
 
-if(module.hot){
+if (module.hot) {
     module.hot.accept();
 }

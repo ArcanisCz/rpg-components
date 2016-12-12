@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ResourceBarDemo from "../parts/ResourceBarDemo";
+import ResourceBarDemo from '../parts/ResourceBarDemo';
 
 const PageFirst = () => (
     <div>
