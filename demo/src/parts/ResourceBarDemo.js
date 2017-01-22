@@ -34,7 +34,7 @@ export default class ResourceBarDemo extends Component {
                         value={this.state.value}
                         className="hp"
                     />
-                    <br/>
+                    <br />
                     <ResourceBar
                         max={this.state.max}
                         value={this.state.value}
