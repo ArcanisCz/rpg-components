@@ -32,6 +32,13 @@ export default class ResourceBarDemo extends Component {
                     <ResourceBar
                         max={this.state.max}
                         value={this.state.value}
+                        className="hp"
+                    />
+                    <br/>
+                    <ResourceBar
+                        max={this.state.max}
+                        value={this.state.value}
+                        className="mana"
                     />
                 </Col>
                 <Col md={6}>

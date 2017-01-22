@@ -1,4 +1,5 @@
 import React, {PropTypes, Component} from "react";
+import classnames from "classnames";
 
 const getValue = (value, max) => Math.max(Math.min(value, max), 0);
 
@@ -56,13 +57,14 @@ class ResourceBar extends Component {
         const emptyTempWidth = ((this.state.value - this.state.displayValue) / this.state.max) * 100;
         const emptyWidth = 100 - (fullWidth + fullTempWidth + emptyTempWidth);
 
+        const classes = classnames("rpg-components-resouce-bar", this.props.className);
         return (
-            <div className="rpg-components-resouce-bar">
+            <div className={classes}>
                 <span className="text">{this.state.value} / {this.state.max}</span>
-                <span className="full-part" style={{width: `${fullWidth}%`, left: `${0}%`}} />
-                <span className="full-temp-part" style={{width: `${fullTempWidth}%`, left: `${fullWidth}%`}} />
-                <span className="empty-temp-part" style={{width: `${emptyTempWidth}%`, left: `${fullWidth + fullTempWidth}%`}} />
-                <span className="empty-part" style={{width: `${emptyWidth}%`, left: `${fullWidth + fullTempWidth + emptyTempWidth}%`}} />
+                <span className="full-part" style={{width: `${fullWidth}%`, left: `${0}%`}}/>
+                <span className="full-temp-part" style={{width: `${fullTempWidth}%`, left: `${fullWidth}%`}}/>
+                <span className="empty-temp-part" style={{width: `${emptyTempWidth}%`, left: `${fullWidth + fullTempWidth}%`}}/>
+                <span className="empty-part" style={{width: `${emptyWidth}%`, left: `${fullWidth + fullTempWidth + emptyTempWidth}%`}}/>
             </div>
         );
     }
@@ -70,9 +72,14 @@ class ResourceBar extends Component {
 
 
 ResourceBar.propTypes = {
-    value: PropTypes.number.isRequired,
     max: PropTypes.number.isRequired,
+    value: PropTypes.number,
+    className: PropTypes.string,
+};
 
+ResourceBar.defaultProps = {
+    className: "",
+    value: 0,
 };
 
 ResourceBar.defaultProps = {};
