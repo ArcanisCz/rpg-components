@@ -16,7 +16,7 @@ https://arcaniscz.github.io/rpg-components/
 
 ## `ResourceBar`
 
-Show amount of some resource (hp/mana/...)
+Shows amount of some resource (hp/mana/...)
 
 
 | Prop | Required | Default | Description |
@@ -36,12 +36,8 @@ can be customized by less mixin ` .makeResourceBar(fullColor, emptyColor, subtra
 | subtractingColor | .full-temp-part | part, which is temporary shown in animation while substracting (taking damage) |
 | addingColor | .empty-temp-part | part, which is temporary shown in animation while adding (heal)|
 
-
-
-
-#### `name : String` [required]
-
-A string name, which will be printed.
+## `Avatar`
+TODO
 
 # Contributing
 TODO
