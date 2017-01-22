@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "./";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -95,7 +95,7 @@
 
 /***/ },
 /* 1 */
-[609, 55],
+[610, 55],
 /* 2 */
 /***/ function(module, exports) {
 
@@ -545,7 +545,7 @@
 
 /***/ },
 /* 10 */
-[521, 23],
+[522, 23],
 /* 11 */
 /***/ function(module, exports) {
 
@@ -2467,7 +2467,7 @@
 
 /***/ },
 /* 40 */
-[597, 11, 9],
+[598, 11, 9],
 /* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2506,7 +2506,7 @@
 
 /***/ },
 /* 42 */
-[521, 144],
+[522, 144],
 /* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -3359,13 +3359,13 @@
 
 /***/ },
 /* 55 */
-[598, 13, 495, 142, 500, 496, 497, 56, 498, 501, 502, 10],
+[599, 13, 495, 142, 500, 496, 497, 56, 498, 501, 502, 10],
 /* 56 */
-[603, 13, 31, 10, 233, 231],
+[604, 13, 31, 10, 233, 231],
 /* 57 */
 11,
 /* 58 */
-[603, 93, 235, 42, 238, 236],
+[604, 93, 235, 42, 238, 236],
 /* 59 */
 /***/ function(module, exports) {
 
@@ -10231,17 +10231,17 @@
 
 /***/ },
 /* 142 */
-[601, 57, 143, 233, 64, 9, 10],
+[602, 57, 143, 233, 64, 9, 10],
 /* 143 */
-[604, 10],
+[605, 10],
 /* 144 */
 23,
 /* 145 */
 64,
 /* 146 */
-[601, 72, 147, 238, 145, 71, 42],
+[602, 72, 147, 238, 145, 71, 42],
 /* 147 */
-[604, 42],
+[605, 42],
 /* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18750,7 +18750,7 @@
 /* 239 */
 234,
 /* 240 */
-[609, 511],
+[610, 512],
 /* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -19136,7 +19136,14 @@
 	                        { md: 6 },
 	                        _react2['default'].createElement(_src.ResourceBar, {
 	                            max: this.state.max,
-	                            value: this.state.value
+	                            value: this.state.value,
+	                            className: 'hp'
+	                        }),
+	                        _react2['default'].createElement('br', null),
+	                        _react2['default'].createElement(_src.ResourceBar, {
+	                            max: this.state.max,
+	                            value: this.state.value,
+	                            className: 'mana'
 	                        })
 	                    ),
 	                    _react2['default'].createElement(
@@ -41689,25 +41696,25 @@
 /* 493 */
 125,
 /* 494 */
-[597, 57, 9],
+[598, 57, 9],
 /* 495 */
-[599, 494, 56, 23, 503],
+[600, 494, 56, 23, 503],
 /* 496 */
-[600, 57, 13, 142, 56, 232, 143, 64, 9, 10],
+[601, 57, 13, 142, 56, 232, 143, 64, 9, 10],
 /* 497 */
-[602, 56],
+[603, 56],
 /* 498 */
-[605, 56, 232, 499, 23, 234, 10],
+[606, 56, 232, 499, 23, 234, 10],
 /* 499 */
 435,
 /* 500 */
-[606, 13, 142, 143, 64],
+[607, 13, 142, 143, 64],
 /* 501 */
 440,
 /* 502 */
-[607, 57, 56, 9],
+[608, 57, 56, 9],
 /* 503 */
-[608, 57, 31, 231, 234, 9, 493, 10],
+[609, 57, 31, 231, 234, 9, 493, 10],
 /* 504 */
 /***/ function(module, exports) {
 
@@ -42055,6 +42062,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _classnames = __webpack_require__(509);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -42153,9 +42164,10 @@
 	                var emptyTempWidth = (this.state.value - this.state.displayValue) / this.state.max * 100;
 	                var emptyWidth = 100 - (fullWidth + fullTempWidth + emptyTempWidth);
 	
+	                var classes = (0, _classnames2["default"])("rpg-components-resouce-bar", this.props.className);
 	                return _react2["default"].createElement(
 	                    "div",
-	                    { className: "rpg-components-resouce-bar" },
+	                    { className: classes },
 	                    _react2["default"].createElement(
 	                        "span",
 	                        { className: "text" },
@@ -42178,9 +42190,14 @@
 	}(_react.Component);
 	
 	ResourceBar.propTypes = {
-	    value: _react.PropTypes.number.isRequired,
-	    max: _react.PropTypes.number.isRequired
+	    max: _react.PropTypes.number.isRequired,
+	    value: _react.PropTypes.number,
+	    className: _react.PropTypes.string
+	};
 	
+	ResourceBar.defaultProps = {
+	    className: "",
+	    value: 0
 	};
 	
 	ResourceBar.defaultProps = {};
@@ -42189,30 +42206,32 @@
 
 /***/ },
 /* 509 */
-125,
+7,
 /* 510 */
-[597, 72, 71],
+125,
 /* 511 */
-[598, 93, 512, 146, 517, 513, 514, 58, 515, 518, 519, 42],
+[598, 72, 71],
 /* 512 */
-[599, 510, 58, 144, 520],
+[599, 93, 513, 146, 518, 514, 515, 58, 516, 519, 520, 42],
 /* 513 */
-[600, 72, 93, 146, 58, 237, 147, 145, 71, 42],
+[600, 511, 58, 144, 521],
 /* 514 */
-[602, 58],
+[601, 72, 93, 146, 58, 237, 147, 145, 71, 42],
 /* 515 */
-[605, 58, 237, 516, 144, 239, 42],
+[603, 58],
 /* 516 */
-435,
+[606, 58, 237, 517, 144, 239, 42],
 /* 517 */
-[606, 93, 146, 147, 145],
+435,
 /* 518 */
-440,
+[607, 93, 146, 147, 145],
 /* 519 */
-[607, 72, 58, 71],
+440,
 /* 520 */
-[608, 72, 235, 236, 239, 71, 509, 42],
+[608, 72, 58, 71],
 /* 521 */
+[609, 72, 235, 236, 239, 71, 510, 42],
+/* 522 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	/**
@@ -42283,7 +42302,6 @@
 	module.exports = warning;
 
 /***/ },
-/* 522 */,
 /* 523 */,
 /* 524 */,
 /* 525 */,
@@ -42358,7 +42376,8 @@
 /* 594 */,
 /* 595 */,
 /* 596 */,
-/* 597 */
+/* 597 */,
+/* 598 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__) {
 
 	/**
@@ -42486,7 +42505,7 @@
 	module.exports = PooledClass;
 
 /***/ },
-/* 598 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__, __webpack_module_template_argument_6__, __webpack_module_template_argument_7__, __webpack_module_template_argument_8__, __webpack_module_template_argument_9__, __webpack_module_template_argument_10__) {
 
 	/**
@@ -42579,7 +42598,7 @@
 	module.exports = React;
 
 /***/ },
-/* 599 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
 
 	/**
@@ -42774,7 +42793,7 @@
 	module.exports = ReactChildren;
 
 /***/ },
-/* 600 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__, __webpack_module_template_argument_6__, __webpack_module_template_argument_7__, __webpack_module_template_argument_8__) {
 
 	/**
@@ -43495,7 +43514,7 @@
 	module.exports = ReactClass;
 
 /***/ },
-/* 601 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__) {
 
 	/**
@@ -43617,7 +43636,7 @@
 	module.exports = ReactComponent;
 
 /***/ },
-/* 602 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	/**
@@ -43791,7 +43810,7 @@
 	module.exports = ReactDOMFactories;
 
 /***/ },
-/* 603 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__) {
 
 	/**
@@ -44136,7 +44155,7 @@
 	module.exports = ReactElement;
 
 /***/ },
-/* 604 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	/**
@@ -44236,7 +44255,7 @@
 	module.exports = ReactNoopUpdateQueue;
 
 /***/ },
-/* 605 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__) {
 
 	/**
@@ -44674,7 +44693,7 @@
 	module.exports = ReactPropTypes;
 
 /***/ },
-/* 606 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__) {
 
 	/**
@@ -44720,7 +44739,7 @@
 	module.exports = ReactPureComponent;
 
 /***/ },
-/* 607 */
+/* 608 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__) {
 
 	/**
@@ -44762,7 +44781,7 @@
 	module.exports = onlyChild;
 
 /***/ },
-/* 608 */
+/* 609 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__, __webpack_module_template_argument_1__, __webpack_module_template_argument_2__, __webpack_module_template_argument_3__, __webpack_module_template_argument_4__, __webpack_module_template_argument_5__, __webpack_module_template_argument_6__) {
 
 	/**
@@ -44942,7 +44961,7 @@
 	module.exports = traverseAllChildren;
 
 /***/ },
-/* 609 */
+/* 610 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	'use strict';
@@ -44952,4 +44971,4 @@
 
 /***/ }
 /******/ ])));
-//# sourceMappingURL=main.525da1c305a90981f866.js.map
+//# sourceMappingURL=main.fac4256a7ee77d367f02.js.map
