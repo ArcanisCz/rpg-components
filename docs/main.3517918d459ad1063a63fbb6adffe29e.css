@@ -1,6 +1,3 @@
-.moro-components-sample-component {
-  background: blue;
-}
 .rpg-components-resouce-bar {
   background: #eee;
   width: 100%;
@@ -30,6 +27,9 @@
   top: 0;
   position: absolute;
   height: 100%;
+}
+.rpg-components-avatar {
+  background-size: cover;
 }
 body {
   color: black;
@@ -6710,4 +6710,4 @@ button.close {
   }
 }
 
-/*# sourceMappingURL=main.ff109704440338d68b32bd82a15fed2e.css.map*/
+/*# sourceMappingURL=main.3517918d459ad1063a63fbb6adffe29e.css.map*/
